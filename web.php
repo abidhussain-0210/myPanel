@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\TagController;
+use App\Http\Controllers\Admin\ProfileController;
 
 
     //Blog Routes
@@ -29,14 +30,23 @@ use App\Http\Controllers\Admin\TagController;
 
     //Tag Route
     Route::controller(TagController::class)->group(function(){
-        Route::get('admin/tag' , 'index')->name('tag.index');
-        Route::get('admin/tag/create' , 'create')->name('tag.create');
-        Route::post('admin/tag/store' , 'storeTag')->name('tag.store');
-        Route::get('admin/tag/delete/{id}' , 'deleteTag')->name('tag.delete');
-        Route::get('admin/tag/edit/{id}' , 'editTag')->name('tag.edit');
-        Route::put('admin/tag/update/{id}' , 'updateTag')->name('tag.update');
+        Route::get('/admin/tag' , 'index')->name('tag.index');
+        Route::get('/admin/tag/create' , 'create')->name('tag.create');
+        Route::post('/admin/tag/store' , 'storeTag')->name('tag.store');
+        Route::get('/admin/tag/delete/{id}' , 'deleteTag')->name('tag.delete');
+        Route::get('/admin/tag/edit/{id}' , 'editTag')->name('tag.edit');
+        Route::put('/admin/tag/update/{id}' , 'updateTag')->name('tag.update');
     });
 
+    //UserProfile
+
+    Route::controller(ProfileController::class)->group(function(){
+
+        Route::get('/admin/profile' , 'profile')->name('user.profile');
+        Route::get('/admin/account-setting' , 'accountSetting')->name('user.acount.setting');
+
+
+    });
 
 
     // Route::get('/', function () {
